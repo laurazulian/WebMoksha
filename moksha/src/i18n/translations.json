@@ -1,0 +1,22 @@
+{
+  "es": {
+    "translation": {
+      "subtitle": "Cocina de autor con raíces en la tierra",
+      "menu": "Menú",
+      "Entradas": "Entradas",
+      "Platos Principales": "Platos Principales",
+      "Postres": "Postres",
+      "reservar": "Reservar"
+    }
+  },
+  "en": {
+    "translation": {
+      "subtitle": "Signature cuisine rooted in the earth",
+      "menu": "Menu",
+      "Entradas": "Starters",
+      "Platos Principales": "Main Courses",
+      "Postres": "Desserts",
+      "reservar": "Reserve"
+    }
+  }
+}
