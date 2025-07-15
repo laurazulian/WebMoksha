@@ -1,13 +1,5 @@
-import React from "react";
-import "./index.css";
-import MokshaLandingPage from "./MokshaLandingPage";
+import MokshaLanding from "./MokshaLanding";
 
-function App() {
-  return (
-    <div className="App">
-      <MokshaLandingPage />
-    </div>
-  );
+export default function App() {
+  return <MokshaLanding />;
 }
-
-export default App;
