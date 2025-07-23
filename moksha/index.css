@@ -2,6 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-tierra-claro font-serif text-tierra-oscuro;
-}

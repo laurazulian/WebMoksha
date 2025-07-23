@@ -2,22 +2,21 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,jsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
-      fontFamily: {
-        serif: ['"Playfair Display"', "serif"],
-        sans: ['"Helvetica Neue"', "sans-serif"],
-      },
       colors: {
         tierra: {
-          claro: "#f6f1ec",
-          medio: "#d7c4b4",
-          oscuro: "#4b3b2b",
+          claro: "#dbc9bc",
+          medio: "#d9b177",
+          oscuro: "#213f56",
         },
+      },
+      fontFamily: {
+        sans: ["Noir Pro", "sans-serif"],
       },
     },
   },
   plugins: [],
-};
+}
