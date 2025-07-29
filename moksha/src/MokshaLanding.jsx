@@ -84,7 +84,7 @@ export default function MokshaLanding() {
 
       {/* FOOTER */}
       <footer className="text-center py-6 text-sm text-gray-500">
-        © {new Date().getFullYear()} Moksha. Todos los derechos reservados.
+        © {new Date().getFullYear()} Moksha. Todos los derechos reservados. Hecho con amor por MACA.
       </footer>
     </div>
   );
