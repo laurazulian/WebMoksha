@@ -19,7 +19,7 @@ export default function MokshaLanding() {
       {/* HERO */}
       <motion.section
         id="inicio"
-        className="min-h-screen bg-[url('./Foto1.jpg')] bg-cover bg-center flex flex-col justify-center items-center text-white text-center px-6"
+        className="min-h-screen bg-[url('/Foto1.jpg')] bg-cover bg-center flex flex-col justify-center items-center text-white text-center px-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2 }}
