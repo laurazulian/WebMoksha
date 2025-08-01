@@ -32,7 +32,7 @@ export default function MokshaLanding() {
         >
           <h1 className="mb-6">
             <img
-              src="./Recurso1.svg"
+              src="/Recurso1.svg"
               alt="Logo Moksha"
               className="w-40 h-auto mx-auto rounded-xl shadow-lg bg-white/80 p-2 border-2 border-beige"
             />
