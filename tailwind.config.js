@@ -7,14 +7,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        tierra: {
-          claro: "#dbc9bc",
-          medio: "#d9b177",
-          oscuro: "#213f56",
-        },
+        oliva: '#7e7d23',
+        mokka: '#724c35',
+        beige: '#bcab91',
+        latte: '#d4a374',
+        tostado: '#3d2f2f',
+        arena: '#f7efe4',
+        gris: '#cacac0',
       },
       fontFamily: {
-        sans: ["Noir Pro", "sans-serif"],
+        grotesque: ['"Bricolage Grotesque"', 'sans-serif'],
+        amiri: ['"Amiri"', 'serif'],
       },
     },
      keyframes: {

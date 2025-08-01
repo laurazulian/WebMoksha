@@ -12,11 +12,11 @@ export default function MokshaLanding() {
     { categoria: "Wines", items: ["White", "Red", "Rosé"] },
   ];
 
-  const seccionesConImagen = [1, 3, 5]; // cada 2 secciones insertamos imagen
+  const seccionesConImagen = [1, 3, 5];
 
   return (
-    <div className="font-sans text-[#333] bg-[#f8f4f0] scroll-smooth min-h-screen flex flex-col">
-      {/* HERO LANDING */}
+    <div className="font-grotesque text-tostado bg-arena scroll-smooth min-h-screen flex flex-col">
+      {/* HERO */}
       <motion.section
         id="inicio"
         className="min-h-screen bg-[url('./Foto1.jpg')] bg-cover bg-center flex flex-col justify-center items-center text-white text-center px-6"
@@ -25,41 +25,42 @@ export default function MokshaLanding() {
         transition={{ duration: 1.2 }}
       >
         <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 1 }}
-            className="bg-black bg-opacity-50 p-8 rounded-lg max-w-xl"
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3, duration: 1 }}
+          className="bg-black bg-opacity-50 p-8 rounded-lg max-w-xl"
+        >
+          <h1 className="mb-6">
+            <img
+              src="./Recurso1.svg"
+              alt="Logo Moksha"
+              className="w-40 h-auto mx-auto rounded-xl shadow-lg bg-white/80 p-2 border-2 border-beige"
+            />
+          </h1>
+
+          <p className="italic text-lg font-amiri text-latte mb-6">
+            Una taza que te libera.
+          </p>
+
+          <a
+            href="#productos"
+            className="bg-white text-oliva font-semibold px-6 py-3 rounded-full hover:bg-arena transition"
           >
-            <h1 className="mb-6">
-              <img
-                src="./Recurso1.svg"
-                alt="Logo Moksha"
-                className="w-70 h-auto mx-auto "
-              />
-            </h1>
+            Ver menú
+          </a>
 
-
-            <p className="italic text-lg mb-6">Una taza que te libera.</p>
-
-            <a
-              href="#productos"
-              className="bg-white text-[#747c3c] font-semibold px-6 py-3 rounded-full hover:bg-[#f8f4f0] transition"
-            >
-              Ver menú
-            </a>
-
-            <a
-              href="https://wa.me/5492610000000"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-block bg-[#25D366] text-white font-semibold px-6 py-3 rounded-full hover:bg-green-600 transition"
-            >
-              Reservar por WhatsApp
-            </a>
-          </motion.div>
+          <a
+            href="https://wa.me/5492610000000"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-block bg-[#25D366] text-white font-semibold px-6 py-3 rounded-full hover:bg-green-600 transition"
+          >
+            Reservar por WhatsApp
+          </a>
+        </motion.div>
       </motion.section>
 
-      {/* SECCIÓN DE MENÚ */}
+      {/* MENÚ */}
       <section id="productos" className="py-16 px-4 md:px-12 flex-grow">
         <div className="max-w-7xl mx-auto grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {productos.map((grupo, idx) => (
@@ -69,29 +70,28 @@ export default function MokshaLanding() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-white rounded-xl shadow-lg p-6 flex flex-col"
+              className="bg-white rounded-xl shadow-md p-6 flex flex-col border border-beige"
             >
-              <h2 className="text-2xl font-serif text-[#747c3c] border-b border-gray-300 pb-2 mb-6 uppercase tracking-wider">
+              <h2 className="text-xl font-amiri text-mokka border-b border-gris pb-2 mb-6 uppercase tracking-wider">
                 {grupo.categoria}
               </h2>
               <ul className="space-y-5 flex-grow">
                 {grupo.items.map((item, i) => (
                   <li
                     key={i}
-                    className="flex justify-between items-center hover:bg-[#f1f1e6] rounded-md px-3 py-2 cursor-pointer transition"
+                    className="flex justify-between items-center hover:bg-beige/30 rounded-md px-3 py-2 cursor-pointer transition"
                   >
                     <div>
                       <h3 className="font-semibold text-md">{item}</h3>
-                      <p className="text-sm text-gray-600 font-light">
+                      <p className="text-sm text-gris font-light">
                         Lorem ipsum dolor sit amet, consectetur elit.
                       </p>
                     </div>
-                    <span className="text-md font-semibold text-gray-700">$10.00</span>
+                    <span className="text-md font-semibold text-tostado">$10.00</span>
                   </li>
                 ))}
               </ul>
 
-              {/* Imagen cada 2 secciones */}
               {seccionesConImagen.includes(idx) && (
                 <div className="mt-6">
                   <img
@@ -106,9 +106,9 @@ export default function MokshaLanding() {
         </div>
       </section>
 
-      {/* MAPA DE UBICACIÓN */}
+      {/* MAPA */}
       <section className="px-4 md:px-12 py-12">
-        <h2 className="text-2xl font-serif text-center text-[#747c3c] mb-6">Dónde estamos</h2>
+        <h2 className="text-2xl font-amiri text-center text-mokka mb-6">Dónde estamos</h2>
         <div className="w-full h-96 rounded-xl overflow-hidden shadow-lg">
           <iframe
             title="Ubicación Moksha"
@@ -123,7 +123,7 @@ export default function MokshaLanding() {
       </section>
 
       {/* FOOTER */}
-      <footer className="text-center py-6 text-sm text-gray-500 bg-[#e8e4dc]">
+      <footer className="text-center py-6 text-sm text-gris bg-beige font-grotesque">
         © {new Date().getFullYear()} Moksha. Todos los derechos reservados. Hecho con amor por MACA.
       </footer>
     </div>
