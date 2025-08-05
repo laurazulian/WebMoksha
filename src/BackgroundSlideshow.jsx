@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './BackgroundSlideshow.css'; // Para estilos opcionales
+import './App.css'; // Para estilos opcionales
 
 const images = [
   '/Foto1.jpg',
