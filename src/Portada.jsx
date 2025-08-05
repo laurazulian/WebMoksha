@@ -44,13 +44,12 @@ export default function Portada({ onEnter, mapaRef }) {
               href="https://wa.me/5492610000000"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#25D366] text-white font-bold px-4 sm:px-8 py-3 sm:py-4 rounded-full
-                         hover:bg-green-600 transition-all duration-300 transform hover:scale-105
-                         shadow-lg text-sm sm:text-lg inline-block text-center w-full max-w-xs"
+              className="bg-[#25D366] text-white font-medium px-5 py-2 rounded-md
+                        hover:bg-green-600 transition duration-300 shadow-md text-sm inline-block w-full max-w-xs text-center"
             >
-              <span className="block sm:inline">🥤 Reservar Mesa</span>
-              <span className="block sm:inline sm:ml-1">WhatsApp</span>
+             Reservar por WhatsApp
             </a>
+
           </div>
 
           {/* Idiomas */}
@@ -61,9 +60,7 @@ export default function Portada({ onEnter, mapaRef }) {
                 <button
                   key={lang}
                   onClick={() => onEnter(lang)}
-                  className="bg-white text-oliva font-semibold px-3 py-1.5 rounded-full
-                             hover:bg-arena transition-all duration-300 transform hover:scale-105
-                             w-40"
+                  className="bg-[#724c35] text-white px-4 py-2 rounded-md shadow hover:bg-[#5c3b2a] transition"
                 >
                   {lang === "es" && "Entrar en Español"}
                   {lang === "en" && "Enter in English"}
@@ -75,14 +72,14 @@ export default function Portada({ onEnter, mapaRef }) {
 
           {/* Botón de ubicación separado */}
           <div className="mt-6">
-            <button
-              onClick={openMapPopup}
-              className="bg-white/90 text-oliva font-semibold px-6 py-3 rounded-full
-                         hover:bg-white transition-all duration-300 transform hover:scale-105
-                         border-2 border-beige"
-            >
-              📍 Ver Ubicación
-            </button>
+           <button
+          onClick={openMapPopup}
+          className="bg-white text-oliva font-medium px-5 py-2 rounded-md
+                    hover:bg-gray-100 transition duration-300 shadow-md text-sm border border-beige"
+        >
+          📍 Ver Ubicación
+        </button>
+
           </div>
         </div>
       </div>
