@@ -25,7 +25,7 @@ export default function Portada({ onEnter, mapaRef }) {
       }`}
     >
       {/* Contenedor del fondo animado */}
-      <div className="absolute inset-0 animated-bg -z-10"></div>
+      {/* <div className="absolute inset-0 animated-bg -z-10"></div> */}
 
       {/* Contenido principal de la portada */}
       <div className="relative z-10 min-h-screen flex flex-col justify-center items-center text-white text-center px-6">

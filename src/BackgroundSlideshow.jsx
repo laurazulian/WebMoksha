@@ -1,36 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from "react";
 import './App.css';
-
 const images = [
-  '/Foto1.jpg',
-  '/Foto2.jpg',
-  '/Foto3.jpg',
+  "/Foto1.jpg",
+  "/Foto2.jpg",
+  "/Foto3.jpg",
 ];
 
-const BackgroundSlideshow = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [fade, setFade] = useState(true);
+export default function BackgroundSlideshow() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [nextIndex, setNextIndex] = useState(1);
+  const [fadeInCurrent, setFadeInCurrent] = useState(true);
+  const intervalRef = useRef(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setFade(false); // inicia fade-out
-      setTimeout(() => {
-        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-        setFade(true); // inicia fade-in
-      }, 500); // duración del fade
-    }, 4000); // cada 4 segundos
+    intervalRef.current = setInterval(() => {
+      setFadeInCurrent(false); // fade out current
 
-    return () => clearInterval(interval);
-  }, []);
+      setTimeout(() => {
+        setCurrentIndex(nextIndex);
+        setNextIndex((nextIndex + 1) % images.length);
+        setFadeInCurrent(true); // fade in next
+      }, 1000); // duración del fade (igual que en CSS)
+    }, 6000); // tiempo total por imagen
+
+    return () => clearInterval(intervalRef.current);
+  }, [nextIndex]);
 
   return (
-    <div
-      className={`slideshow-bg ${fade ? 'fade-in' : 'fade-out'}`}
-      style={{
-        backgroundImage: `url(${images[currentImageIndex]})`,
-      }}
-    ></div>
+    <div className="background-slideshow">
+      <img
+        src={images[currentIndex]}
+        alt="background current"
+        className={`slide ${fadeInCurrent ? "fade-in" : "fade-out"}`}
+      />
+      <img
+        src={images[nextIndex]}
+        alt="background next"
+        className={`slide ${fadeInCurrent ? "fade-out" : "fade-in"}`}
+      />
+    </div>
   );
-};
-
-export default BackgroundSlideshow;
+}

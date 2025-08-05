@@ -130,30 +130,15 @@ export default function MokshaLanding({ menuRef, mapaRef, mostrarHero }) {
               {seccionesConImagen.includes(idx) && (
                 <div className="mt-6">
                   <img
-                    src={`/menu-img-${idx}.jpg`}
+                    src={`/FotoComida1-${idx}.jpg`}
                     alt="Delicia del menú"
                     className="w-full rounded-lg shadow-md object-cover h-40"
                   />
                 </div>
               )}
+
             </motion.div>
           ))}
-        </div>
-      </section>
-
-      {/* MAPA */}
-      <section ref={mapaRef} className="px-4 md:px-12 py-12">
-        <h2 className="text-2xl font-amiri text-center text-mokka mb-6">Dónde estamos</h2>
-        <div className="w-full max-w-lg mx-auto h-64 rounded-xl overflow-hidden shadow-lg">
-          <iframe
-            title="Ubicación Moksha"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.716752047106!2d-68.84505958480499!3d-32.88945868094154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e09c39fbdc0a3%3A0xfcc6d02d5c2851fa!2sPlaza%20Independencia!5e0!3m2!1ses-419!2sar!4v1653680509112!5m2!1ses-419!2sar"
-            width="100%"
-            height="100%"
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
         </div>
       </section>
 
