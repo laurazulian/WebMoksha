@@ -26,16 +26,34 @@ export default function MokshaLanding({ menuRef, mapaRef, mostrarHero }) {
       {mostrarHero && (
         <motion.section
           id="inicio"
-          className="min-h-screen bg-[url('/Foto1.jpg')] bg-cover bg-center flex flex-col justify-center items-center text-white text-center px-6"
+          className="min-h-screen relative flex flex-col justify-center items-center text-white text-center px-6 overflow-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2 }}
         >
+          {/* Fondo animado */}
+          <div className="absolute inset-0 z-0">
+            {fondoImgs.map((img, i) => (
+              <div
+                key={i}
+                className={`bg-cover bg-center absolute inset-0 animate-fadeAnimation`}
+                style={{ 
+                  backgroundImage: `url(${img})`,
+                  animationDelay: `${i * 8}s`,
+                  animationDuration: `${fondoImgs.length * 8}s`
+                }}
+              ></div>
+            ))}
+            {/* Capa negra semi-transparente para contraste */}
+            <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+          </div>
+
+          {/* Contenido encima del fondo */}
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 1 }}
-            className="bg-black bg-opacity-50 p-8 rounded-lg max-w-xl" // Estas son las clases que te habia pasado, en este caso, se están aplicando un fondo negro y un padding que generan el recuadro.
+            className="relative z-10 p-8 rounded-lg max-w-xl"
           >
             <h1 className="mb-6">
               <img
@@ -87,7 +105,7 @@ export default function MokshaLanding({ menuRef, mapaRef, mostrarHero }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-white rounded-xl shadow-md p-6 flex flex-col border border-beige"
+              className="bg-white rounded-xl shadow-md p-6 flex flex-col "
             >
               <h2 className="text-xl font-amiri text-mokka border-b border-gris pb-2 mb-6 uppercase tracking-wider">
                 {grupo.categoria}

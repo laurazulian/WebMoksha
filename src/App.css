@@ -40,3 +40,22 @@
 .read-the-docs {
   color: #888;
 }
+
+@keyframes image-scroll {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.animated-bg {
+  background-image: url('./assets/react.svg'), url('/public/Foto2.jpg'), url('./public/Foto1.jpg');
+  background-size: cover;
+  background-position: center;
+  animation: image-scroll 60s linear infinite;
+}

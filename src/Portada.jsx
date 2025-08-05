@@ -20,65 +20,70 @@ export default function Portada({ onEnter, mapaRef }) {
 
   return (
     <div
-      className={`min-h-screen bg-[url('/Foto1.jpg')] bg-cover bg-center flex flex-col justify-center items-center text-white text-center px-6 transition-opacity duration-1000 ${
+      className={`min-h-screen relative overflow-hidden transition-opacity duration-1000 ${
         fadeIn ? 'opacity-100' : 'opacity-0'
       }`}
     >
-      <div className="bg-black/60 p-8 rounded-xl max-w-xl w-full shadow-xl">
-        <img
-          src="/Recurso1.svg"
-          alt="Logo Moksha"
-          className="w-56 h-auto mx-auto rounded-xl shadow-lg bg-white/80 p-2 border-2 border-beige mb-6 transition-transform duration-500 hover:scale-105"
-        />
+      {/* Contenedor del fondo animado */}
+      <div className="absolute inset-0 animated-bg -z-10"></div>
 
-        <h1 className="text-3xl font-amiri mb-4">Bienvenidos</h1>
-        <p className="text-latte mb-6 italic">Una taza que te libera</p>
+      {/* Contenido principal de la portada */}
+      <div className="relative z-10 min-h-screen flex flex-col justify-center items-center text-white text-center px-6">
+        <div className="bg-black/60 p-8 rounded-xl max-w-xl w-full shadow-xl">
+          <img
+            src="/Recurso1.svg"
+            alt="Logo Moksha"
+            className="w-72 h-auto mx-auto"
+          />
 
-        {/* Botón de reserva */}
-        <div className="mb-8">
-          <a
-            href="https://wa.me/5492610000000"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[#25D366] text-white font-bold px-4 sm:px-8 py-3 sm:py-4 rounded-full 
-                       hover:bg-green-600 transition-all duration-300 transform hover:scale-105 
-                       shadow-lg text-sm sm:text-lg inline-block text-center w-full max-w-xs"
-          >
-            <span className="block sm:inline">🥤 Reservar Mesa</span>
-            <span className="block sm:inline sm:ml-1">WhatsApp</span>
-          </a>
-        </div>
+          <p className="text-latte mb-6 italic">Una taza que te libera</p>
 
-        {/* Idiomas */}
-        <div className="border-t border-white/30 pt-6">
-          <p className="text-sm text-latte mb-4">Selecciona tu idioma:</p>
-          <div className="flex flex-col gap-2 text-xs items-center">
-            {["es", "en", "pt"].map((lang) => (
-              <button
-                key={lang}
-                onClick={() => onEnter(lang)}
-                className="bg-white text-oliva font-semibold px-3 py-1.5 rounded-full 
-                           hover:bg-arena transition-all duration-300 transform hover:scale-105 
-                           w-40"
-              >
-                {lang === "es" && "Entrar en Español"}
-                {lang === "en" && "Enter in English"}
-                {lang === "pt" && "Entrar em Português"}
-              </button>
-            ))}
+          {/* Botón de reserva */}
+          <div className="mb-8">
+            <a
+              href="https://wa.me/5492610000000"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#25D366] text-white font-bold px-4 sm:px-8 py-3 sm:py-4 rounded-full
+                         hover:bg-green-600 transition-all duration-300 transform hover:scale-105
+                         shadow-lg text-sm sm:text-lg inline-block text-center w-full max-w-xs"
+            >
+              <span className="block sm:inline">🥤 Reservar Mesa</span>
+              <span className="block sm:inline sm:ml-1">WhatsApp</span>
+            </a>
           </div>
-        </div>
 
-        {/* Botón de ubicación separado */}
-        <div className="mt-6">
-          <button
-            onClick={openMapPopup}
-            className="bg-white/90 text-oliva font-semibold px-6 py-3 rounded-full 
-                       hover:bg-white transition-all duration-300 transform hover:scale-105 
-                       border-2 border-beige"
-          >
-            📍 Ver Ubicación
-          </button>
+          {/* Idiomas */}
+          <div className="border-t border-white/30 pt-6">
+            <p className="text-sm text-latte mb-4">Selecciona tu idioma:</p>
+            <div className="flex flex-col gap-2 text-xs items-center">
+              {["es", "en", "pt"].map((lang) => (
+                <button
+                  key={lang}
+                  onClick={() => onEnter(lang)}
+                  className="bg-white text-oliva font-semibold px-3 py-1.5 rounded-full
+                             hover:bg-arena transition-all duration-300 transform hover:scale-105
+                             w-40"
+                >
+                  {lang === "es" && "Entrar en Español"}
+                  {lang === "en" && "Enter in English"}
+                  {lang === "pt" && "Entrar em Português"}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Botón de ubicación separado */}
+          <div className="mt-6">
+            <button
+              onClick={openMapPopup}
+              className="bg-white/90 text-oliva font-semibold px-6 py-3 rounded-full
+                         hover:bg-white transition-all duration-300 transform hover:scale-105
+                         border-2 border-beige"
+            >
+              📍 Ver Ubicación
+            </button>
+          </div>
         </div>
       </div>
 
