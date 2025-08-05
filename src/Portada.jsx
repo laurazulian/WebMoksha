@@ -13,18 +13,20 @@ function Portada({ onEnter }) {
 
         <div className="flex flex-col gap-4">
           {/* Idiomas */}
-          <button
-            onClick={onEnter}
-            className="bg-white text-oliva font-semibold px-6 py-3 rounded-full hover:bg-arena transition"
-          >
-            Entrar en Español
-          </button>
-          <button
-            onClick={onEnter}
-            className="bg-white text-oliva font-semibold px-6 py-3 rounded-full hover:bg-arena transition"
-          >
-            Enter in English
-          </button>
+            <button
+                onClick={() => onEnter("es")}
+                className="bg-white text-oliva font-semibold px-6 py-3 rounded-full hover:bg-arena transition"
+                >
+                Entrar en Español
+                </button>
+
+                <button
+                onClick={() => onEnter("en")}
+                className="bg-white text-oliva font-semibold px-6 py-3 rounded-full hover:bg-arena transition"
+                >
+                Enter in English
+        </button>
+
 
           {/* Mapa y contacto */}
           <div className="mt-6 text-sm text-latte">

@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-
-export default function MokshaLanding() {
+export default function MokshaLanding({ menuRef }) {
   const productos = [
     { categoria: "To start", items: ["Chicken Corn", "Hot N Soup", "Veggie Corn"] },
     { categoria: "Share", items: ["Chicken Roll", "Avocado Roll", "Veggie Corn"] },
@@ -61,7 +60,7 @@ export default function MokshaLanding() {
       </motion.section>
 
       {/* MENÚ */}
-      <section id="productos" className="py-16 px-4 md:px-12 flex-grow">
+      <section id="productos" ref={menuRef} className="py-16 px-4 md:px-12 flex-grow">
         <div className="max-w-7xl mx-auto grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {productos.map((grupo, idx) => (
             <motion.div
