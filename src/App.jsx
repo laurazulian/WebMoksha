@@ -6,9 +6,9 @@ export default function App() {
   const [mostrarLanding, setMostrarLanding] = useState(false);
   const [mostrarHero, setMostrarHero] = useState(true);
   const menuRef = useRef(null);
+  const mapaRef = useRef(null); // ref para el mapa
 
   const handleEnter = (idioma) => {
-    // ❌ Eliminado localStorage.setItem(...)
     setMostrarHero(false);
     setMostrarLanding(true);
 
@@ -21,9 +21,12 @@ export default function App() {
   };
 
   return mostrarLanding ? (
-    <MokshaLanding menuRef={menuRef} mostrarHero={mostrarHero} />
+    <MokshaLanding
+      menuRef={menuRef}
+      mapaRef={mapaRef}
+      mostrarHero={mostrarHero}
+    />
   ) : (
     <Portada onEnter={handleEnter} />
   );
 }
-

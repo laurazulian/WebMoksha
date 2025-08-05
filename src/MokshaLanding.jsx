@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-export default function MokshaLanding({ menuRef, mostrarHero  }) {
+
+export default function MokshaLanding({ menuRef, mapaRef, mostrarHero }) {
   const productos = [
     { categoria: "To start", items: ["Chicken Corn", "Hot N Soup", "Veggie Corn"] },
     { categoria: "Share", items: ["Chicken Roll", "Avocado Roll", "Veggie Corn"] },
@@ -13,53 +14,69 @@ export default function MokshaLanding({ menuRef, mostrarHero  }) {
 
   const seccionesConImagen = [1, 3, 5];
 
+  const scrollToMapa = () => {
+    if (mapaRef.current) {
+      mapaRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="font-grotesque text-tostado bg-arena scroll-smooth min-h-screen flex flex-col">
       {/* HERO */}
       {mostrarHero && (
-      <motion.section
-        id="inicio"
-        className="min-h-screen bg-[url('/Foto1.jpg')] bg-cover bg-center flex flex-col justify-center items-center text-white text-center px-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
-      >
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.3, duration: 1 }}
-          className="bg-black bg-opacity-50 p-8 rounded-lg max-w-xl"
+        <motion.section
+          id="inicio"
+          className="min-h-screen bg-[url('/Foto1.jpg')] bg-cover bg-center flex flex-col justify-center items-center text-white text-center px-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2 }}
         >
-          <h1 className="mb-6">
-            <img
-              src="/Recurso1.svg"
-              alt="Logo Moksha"
-              className="w-40 h-auto mx-auto rounded-xl shadow-lg bg-white/80 p-2 border-2 border-beige"
-            />
-          </h1>
-
-          <p className="italic text-lg font-amiri text-latte mb-6">
-            Una taza que te libera.
-          </p>
-
-          <a
-            href="#productos"
-            className="bg-white text-oliva font-semibold px-6 py-3 rounded-full hover:bg-arena transition"
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 1 }}
+            className="bg-black bg-opacity-50 p-8 rounded-lg max-w-xl"
           >
-            Ver menú
-          </a>
+            <h1 className="mb-6">
+              <img
+                src="/Recurso1.svg"
+                alt="Logo Moksha"
+                className="w-56 h-auto mx-auto rounded-xl shadow-lg bg-white/80 p-2 border-2 border-beige"
+              />
+            </h1>
 
-          <a
-            href="https://wa.me/5492610000000"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-block bg-[#25D366] text-white font-semibold px-6 py-3 rounded-full hover:bg-green-600 transition"
-          >
-            Reservar por WhatsApp
-          </a>
-        </motion.div>
-      </motion.section>
+            <p className="italic text-lg font-amiri text-latte mb-6">
+              Una taza que te libera.
+            </p>
+
+            <div className="flex flex-col gap-4">
+              <a
+                href="#productos"
+                className="bg-white text-oliva font-semibold px-6 py-3 rounded-full hover:bg-arena transition"
+              >
+                Ver menú
+              </a>
+
+              <button
+                onClick={scrollToMapa}
+                className="bg-white text-oliva font-semibold px-6 py-3 rounded-full hover:bg-arena transition"
+              >
+                Ver mapa
+              </button>
+
+              <a
+                href="https://wa.me/5492610000000"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#25D366] text-white font-semibold px-6 py-3 rounded-full hover:bg-green-600 transition"
+              >
+                Reservar por WhatsApp
+              </a>
+            </div>
+          </motion.div>
+        </motion.section>
       )}
+
       {/* MENÚ */}
       <section id="productos" ref={menuRef} className="py-16 px-4 md:px-12 flex-grow">
         <div className="max-w-7xl mx-auto grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -107,9 +124,9 @@ export default function MokshaLanding({ menuRef, mostrarHero  }) {
       </section>
 
       {/* MAPA */}
-      <section className="px-4 md:px-12 py-12">
+      <section ref={mapaRef} className="px-4 md:px-12 py-12">
         <h2 className="text-2xl font-amiri text-center text-mokka mb-6">Dónde estamos</h2>
-        <div className="w-full h-96 rounded-xl overflow-hidden shadow-lg">
+        <div className="w-full max-w-lg mx-auto h-64 rounded-xl overflow-hidden shadow-lg">
           <iframe
             title="Ubicación Moksha"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.716752047106!2d-68.84505958480499!3d-32.88945868094154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e09c39fbdc0a3%3A0xfcc6d02d5c2851fa!2sPlaza%20Independencia!5e0!3m2!1ses-419!2sar!4v1653680509112!5m2!1ses-419!2sar"
