@@ -34,9 +34,10 @@ export default function Portada({ onEnter, mapaRef }) {
             href="https://wa.me/5492610000000"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#25D366] text-white font-bold px-8 py-4 rounded-full hover:bg-green-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg"
+            className="bg-[#25D366] text-white font-bold px-4 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-green-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm sm:text-lg inline-block text-center w-full max-w-xs"
           >
-            🥤 Reservar Mesa - WhatsApp
+            <span className="block sm:inline">🥤 Reservar Mesa</span>
+            <span className="block sm:inline sm:ml-1">WhatsApp</span>
           </a>
         </div>
 
