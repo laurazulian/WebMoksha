@@ -1,34 +1,29 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef, useState } from "react";
 import MokshaLanding from "./MokshaLanding";
 import Portada from "./Portada";
 
 export default function App() {
   const [mostrarLanding, setMostrarLanding] = useState(false);
+  const [mostrarHero, setMostrarHero] = useState(true);
   const menuRef = useRef(null);
 
-  useEffect(() => {
-    const yaEntró = localStorage.getItem("moksha-entró");
-    if (yaEntró === "true") {
-      setMostrarLanding(true);
-    }
-  }, []);
-
   const handleEnter = (idioma) => {
-    localStorage.setItem("moksha-idioma", idioma);
-    localStorage.setItem("moksha-entró", "true");
+    // ❌ Eliminado localStorage.setItem(...)
+    setMostrarHero(false);
     setMostrarLanding(true);
 
-    // Esperar a que MokshaLanding se monte
+    // Hacer scroll al menú una vez montado
     setTimeout(() => {
       if (menuRef.current) {
         menuRef.current.scrollIntoView({ behavior: "smooth" });
       }
-    }, 300); // espera que el DOM se monte (ajustable)
+    }, 400);
   };
 
   return mostrarLanding ? (
-    <MokshaLanding menuRef={menuRef} />
+    <MokshaLanding menuRef={menuRef} mostrarHero={mostrarHero} />
   ) : (
     <Portada onEnter={handleEnter} />
   );
 }
+

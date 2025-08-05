@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-export default function MokshaLanding({ menuRef }) {
+export default function MokshaLanding({ menuRef, mostrarHero  }) {
   const productos = [
     { categoria: "To start", items: ["Chicken Corn", "Hot N Soup", "Veggie Corn"] },
     { categoria: "Share", items: ["Chicken Roll", "Avocado Roll", "Veggie Corn"] },
@@ -16,6 +16,7 @@ export default function MokshaLanding({ menuRef }) {
   return (
     <div className="font-grotesque text-tostado bg-arena scroll-smooth min-h-screen flex flex-col">
       {/* HERO */}
+      {mostrarHero && (
       <motion.section
         id="inicio"
         className="min-h-screen bg-[url('/Foto1.jpg')] bg-cover bg-center flex flex-col justify-center items-center text-white text-center px-6"
@@ -58,7 +59,7 @@ export default function MokshaLanding({ menuRef }) {
           </a>
         </motion.div>
       </motion.section>
-
+      )}
       {/* MENÚ */}
       <section id="productos" ref={menuRef} className="py-16 px-4 md:px-12 flex-grow">
         <div className="max-w-7xl mx-auto grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
