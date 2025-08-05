@@ -142,31 +142,36 @@ export default function MokshaLanding({ menuRef, mapaRef, mostrarHero }) {
         </div>
       </section>
 
-      {/* CONTACTO */}
-      <section className="bg-black text-white py-8 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
-          {/* Info de contacto */}
-          <div className="space-y-3 text-center md:text-left mb-6 md:mb-0">
-            <div className="flex items-center gap-2">
-              <img src="/icons/whatsapp.svg" alt="WhatsApp" className="w-5 h-5" />
-              <span>+54 9 261 123-4567</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <img src="/icons/pin.svg" alt="Ubicación" className="w-5 h-5" />
-              <span>Av. Arístides Villanueva 123, Mendoza</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <img src="/icons/email.svg" alt="Email" className="w-5 h-5" />
-              <span>hola@mokshacafe.com</span>
-            </div>
-          </div>
+{/* CONTACTO */}
+<section className="bg-beige text-oliva py-12 px-6 md:px-12">
+  <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    {/* Info de contacto */}
+    <div className="space-y-4 text-center md:text-left w-full md:w-1/2">
+      <div className="flex items-center justify-center md:justify-start gap-3">
+        <img src="/icons/whatsapp.svg" alt="WhatsApp" className="w-6 h-6" />
+        <span className="text-base md:text-lg font-medium">+54 9 261 123-4567</span>
+      </div>
+      <div className="flex items-center justify-center md:justify-start gap-3">
+        <img src="/icons/pin.svg" alt="Ubicación" className="w-6 h-6" />
+        <span className="text-base md:text-lg font-medium">Av. Arístides Villanueva 123, Mendoza</span>
+      </div>
+      <div className="flex items-center justify-center md:justify-start gap-3">
+        <img src="/icons/email.svg" alt="Email" className="w-6 h-6" />
+        <span className="text-base md:text-lg font-medium">hola@mokshacafe.com</span>
+      </div>
+    </div>
 
-          {/* Logo */}
-          <div>
-            <img src="/logo-moksha-blanco.svg" alt="Moksha Logo" className="h-16 md:h-20" />
-          </div>
-        </div>
-      </section>
+    {/* Imagen o mapa decorativo opcional */}
+    <div className="w-full md:w-1/2">
+      <img
+        src="/FotoContacto.jpg"
+        alt="Contacto Moksha"
+        className="rounded-xl shadow-lg w-full h-auto object-cover max-h-60 md:max-h-72"
+      />
+    </div>
+  </div>
+</section>
+
 
       {/* FOOTER */}
       <footer className="text-center py-6 text-sm text-gris bg-beige font-grotesque">
