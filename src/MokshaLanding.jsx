@@ -21,7 +21,7 @@ export default function MokshaLanding({ menuRef, mapaRef, mostrarHero }) {
   };
 
   return (
-    <div className="font-grotesque text-tostado bg-arena scroll-smooth min-h-screen flex flex-col">
+    <div className="font-grotesque scroll-smooth min-h-screen flex flex-col">
       {/* HERO */}
       {mostrarHero && (
         <motion.section
@@ -35,13 +35,13 @@ export default function MokshaLanding({ menuRef, mapaRef, mostrarHero }) {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 1 }}
-            className="bg-black bg-opacity-50 p-8 rounded-lg max-w-xl"
+            className="bg-black bg-opacity-50 p-8 rounded-lg max-w-xl" // Estas son las clases que te habia pasado, en este caso, se están aplicando un fondo negro y un padding que generan el recuadro.
           >
             <h1 className="mb-6">
               <img
                 src="/Recurso1.svg"
                 alt="Logo Moksha"
-                className="w-56 h-auto mx-auto rounded-xl shadow-lg bg-white/80 p-2 border-2 border-beige"
+                className="w-72 h-auto mx-auto"
               />
             </h1>
 
@@ -136,6 +136,32 @@ export default function MokshaLanding({ menuRef, mapaRef, mostrarHero }) {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
+        </div>
+      </section>
+
+      {/* CONTACTO */}
+      <section className="bg-black text-white py-8 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
+          {/* Info de contacto */}
+          <div className="space-y-3 text-center md:text-left mb-6 md:mb-0">
+            <div className="flex items-center gap-2">
+              <img src="/icons/whatsapp.svg" alt="WhatsApp" className="w-5 h-5" />
+              <span>+54 9 261 123-4567</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <img src="/icons/pin.svg" alt="Ubicación" className="w-5 h-5" />
+              <span>Av. Arístides Villanueva 123, Mendoza</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <img src="/icons/email.svg" alt="Email" className="w-5 h-5" />
+              <span>hola@mokshacafe.com</span>
+            </div>
+          </div>
+
+          {/* Logo */}
+          <div>
+            <img src="/logo-moksha-blanco.svg" alt="Moksha Logo" className="h-16 md:h-20" />
+          </div>
         </div>
       </section>
 

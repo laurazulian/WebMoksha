@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Portada({ onEnter, mapaRef }) {
   const [showMapPopup, setShowMapPopup] = useState(false);
+  const [fadeIn, setFadeIn] = useState(false);
+
+  useEffect(() => {
+    // Activa el efecto fade-in al montar el componente
+    setFadeIn(true);
+  }, []);
 
   const scrollToMapa = () => {
     if (mapaRef && mapaRef.current) {
@@ -9,32 +15,34 @@ export default function Portada({ onEnter, mapaRef }) {
     }
   };
 
-  const openMapPopup = () => {
-    setShowMapPopup(true);
-  };
-
-  const closeMapPopup = () => {
-    setShowMapPopup(false);
-  };
+  const openMapPopup = () => setShowMapPopup(true);
+  const closeMapPopup = () => setShowMapPopup(false);
 
   return (
-    <div className="min-h-screen bg-[url('/Foto1.jpg')] bg-cover bg-center flex flex-col justify-center items-center text-white text-center px-6">
-      <div className="bg-black/60 p-8 rounded-xl max-w-xl w-full">
+    <div
+      className={`min-h-screen bg-[url('/Foto1.jpg')] bg-cover bg-center flex flex-col justify-center items-center text-white text-center px-6 transition-opacity duration-1000 ${
+        fadeIn ? 'opacity-100' : 'opacity-0'
+      }`}
+    >
+      <div className="bg-black/60 p-8 rounded-xl max-w-xl w-full shadow-xl">
         <img
           src="/Recurso1.svg"
           alt="Logo Moksha"
-          className="w-56 h-auto mx-auto rounded-xl shadow-lg bg-white/80 p-2 border-2 border-beige mb-6"
+          className="w-56 h-auto mx-auto rounded-xl shadow-lg bg-white/80 p-2 border-2 border-beige mb-6 transition-transform duration-500 hover:scale-105"
         />
-        <h1 className="text-3xl font-amiri mb-4">Bienvenidos a Moksha</h1>
+
+        <h1 className="text-3xl font-amiri mb-4">Bienvenidos</h1>
         <p className="text-latte mb-6 italic">Una taza que te libera</p>
-        
+
         {/* Botón de reserva */}
         <div className="mb-8">
           <a
             href="https://wa.me/5492610000000"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#25D366] text-white font-bold px-4 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-green-600 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm sm:text-lg inline-block text-center w-full max-w-xs"
+            className="bg-[#25D366] text-white font-bold px-4 sm:px-8 py-3 sm:py-4 rounded-full 
+                       hover:bg-green-600 transition-all duration-300 transform hover:scale-105 
+                       shadow-lg text-sm sm:text-lg inline-block text-center w-full max-w-xs"
           >
             <span className="block sm:inline">🥤 Reservar Mesa</span>
             <span className="block sm:inline sm:ml-1">WhatsApp</span>
@@ -45,32 +53,29 @@ export default function Portada({ onEnter, mapaRef }) {
         <div className="border-t border-white/30 pt-6">
           <p className="text-sm text-latte mb-4">Selecciona tu idioma:</p>
           <div className="flex flex-col gap-2 text-xs items-center">
-            <button
-              onClick={() => onEnter("es")}
-              className="bg-white text-oliva font-semibold px-3 py-1.5 rounded-full hover:bg-arena transition w-40"
-            >
-              Entrar en Español
-            </button>
-            <button
-              onClick={() => onEnter("en")}
-              className="bg-white text-oliva font-semibold px-3 py-1.5 rounded-full hover:bg-arena transition w-40"
-            >
-              Enter in English
-            </button>
-            <button
-              onClick={() => onEnter("pt")}
-              className="bg-white text-oliva font-semibold px-3 py-1.5 rounded-full hover:bg-arena transition w-40"
-            >
-              Entrar em Português
-            </button>
+            {["es", "en", "pt"].map((lang) => (
+              <button
+                key={lang}
+                onClick={() => onEnter(lang)}
+                className="bg-white text-oliva font-semibold px-3 py-1.5 rounded-full 
+                           hover:bg-arena transition-all duration-300 transform hover:scale-105 
+                           w-40"
+              >
+                {lang === "es" && "Entrar en Español"}
+                {lang === "en" && "Enter in English"}
+                {lang === "pt" && "Entrar em Português"}
+              </button>
+            ))}
           </div>
         </div>
-        
+
         {/* Botón de ubicación separado */}
         <div className="mt-6">
           <button
             onClick={openMapPopup}
-            className="bg-white/90 text-oliva font-semibold px-6 py-3 rounded-full hover:bg-white transition-all duration-300 border-2 border-beige"
+            className="bg-white/90 text-oliva font-semibold px-6 py-3 rounded-full 
+                       hover:bg-white transition-all duration-300 transform hover:scale-105 
+                       border-2 border-beige"
           >
             📍 Ver Ubicación
           </button>
@@ -91,7 +96,7 @@ export default function Portada({ onEnter, mapaRef }) {
                 ✕
               </button>
             </div>
-            
+
             {/* Contenido del mapa */}
             <div className="p-6">
               <div className="w-full h-96 rounded-lg overflow-hidden shadow-lg">
@@ -105,7 +110,7 @@ export default function Portada({ onEnter, mapaRef }) {
                   referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
               </div>
-              
+
               {/* Información adicional */}
               <div className="mt-4 text-center">
                 <p className="text-oliva font-semibold mb-2">Moksha Café Brunch & Bar</p>
