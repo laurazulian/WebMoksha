@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './App.css'; // Para estilos opcionales
+import './App.css';
 
 const images = [
   '/Foto1.jpg',
@@ -9,20 +9,23 @@ const images = [
 
 const BackgroundSlideshow = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [fade, setFade] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) =>
-        (prevIndex + 1) % images.length
-      );
-    }, 6000); // Cambiar cada 6 segundos
+      setFade(false); // inicia fade-out
+      setTimeout(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+        setFade(true); // inicia fade-in
+      }, 500); // duración del fade
+    }, 4000); // cada 4 segundos
 
-    return () => clearInterval(interval); // Limpieza al desmontar
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div
-      className="slideshow-bg"
+      className={`slideshow-bg ${fade ? 'fade-in' : 'fade-out'}`}
       style={{
         backgroundImage: `url(${images[currentImageIndex]})`,
       }}
