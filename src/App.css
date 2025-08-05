@@ -54,8 +54,10 @@
 }
 
 .animated-bg {
-  background-image: url('./assets/react.svg'), url('/public/Foto2.jpg'), url('./public/Foto1.jpg');
+  background-image: url('/Foto1.jpg'), url('/Foto2.jpg'), url('/Foto3.jpg');
   background-size: cover;
   background-position: center;
   animation: image-scroll 60s linear infinite;
+  width: 100%;
+  height: 100%;
 }

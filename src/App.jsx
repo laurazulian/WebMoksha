@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import MokshaLanding from "./MokshaLanding";
 import Portada from "./Portada";
+import BackgroundSlideshow from './BackgroundSlideshow'
 
 export default function App() {
   const [mostrarLanding, setMostrarLanding] = useState(false);
@@ -46,13 +47,16 @@ export default function App() {
     }, 400);
   };
 
-  return mostrarLanding ? (
-    <MokshaLanding
-      menuRef={menuRef}
-      mapaRef={mapaRef}
-      mostrarHero={mostrarHero}
-    />
-  ) : (
+return mostrarLanding ? (
+  <MokshaLanding
+    menuRef={menuRef}
+    mapaRef={mapaRef}
+    mostrarHero={mostrarHero}
+  />
+) : (
+  <>
+    <BackgroundSlideshow />
     <Portada onEnter={handleEnter} mapaRef={mapaRef} />
-  );
+  </>
+);
 }
