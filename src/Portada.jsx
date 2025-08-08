@@ -12,7 +12,7 @@ export default function Portada({ onEnter, mapaRef }) {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen flex flex-col relative overflow-hidden">
       {/* Fondo con foto */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -32,7 +32,6 @@ export default function Portada({ onEnter, mapaRef }) {
             transition={{ delay: 2.5, duration: 1 }}
             onAnimationComplete={() => setAnimationComplete(true)}
           >
-            {/* Logo grande blanco animado */}
             <motion.img
               src="/Recurso1.svg"
               alt="Logo Moksha"
@@ -45,12 +44,14 @@ export default function Portada({ onEnter, mapaRef }) {
         )}
       </AnimatePresence>
 
-      {/* Logo fijo y visible luego */}
+      {/* Logo */}
       {animationComplete && (
         <img
           src="/Recurso1.svg"
-          className="fixed top-6 left-1/2 transform -translate-x-1/2 w-80 h-80 object-contain z-50 pointer-events-none select-none drop-shadow-lg"
-          style={{ filter: 'drop-shadow(0 0 4px rgba(0,0,0,0.7))' }}
+          className="relative mx-auto mt-6 
+          w-32 h-32 sm:w-48 sm:h-48 md:w-60 md:h-60 lg:w-72 lg:h-72
+          object-contain pointer-events-none select-none drop-shadow-lg"
+          style={{ filter: "drop-shadow(0 0 4px rgba(0,0,0,0.7))" }}
         />
       )}
 
@@ -63,7 +64,9 @@ export default function Portada({ onEnter, mapaRef }) {
           className="relative z-10 min-h-screen flex flex-col justify-center items-center text-center px-6 pt-[1rem]"
         >
           <div className="max-w-xl w-full bg-transparent rounded-xl p-8">
-            <p className="text-latte mb-6 italic text-lg">Una taza que te libera</p>
+            <p className="text-latte mb-6 italic text-lg">
+              Una taza que te libera
+            </p>
 
             {/* Botón de reserva */}
             <div className="mb-8">
@@ -81,15 +84,12 @@ export default function Portada({ onEnter, mapaRef }) {
             <div className="border-t border-white/30 pt-6">
               <p className="text-sm text-latte mb-4">Selecciona tu idioma:</p>
               <div className="flex flex-col sm:flex-row sm:justify-center sm:gap-4 items-center gap-3">
-                {/* Botón texto para Español */}
                 <button
                   onClick={() => onEnter("es")}
                   className="bg-mokka text-white px-8 py-2 rounded-md shadow hover:bg-[#5c3b2a] transition font-medium w-full sm:w-auto text-center"
                 >
                   Entrar en Español
                 </button>
-
-                {/* Botón bandera Inglés */}
                 <button
                   onClick={() => onEnter("en")}
                   className="bg-mokka rounded-md shadow hover:bg-[#5c3b2a] transition p-1 flex items-center justify-center w-12 h-12"
@@ -101,8 +101,6 @@ export default function Portada({ onEnter, mapaRef }) {
                     className="w-8 h-8 object-contain"
                   />
                 </button>
-
-                {/* Botón bandera Portugués */}
                 <button
                   onClick={() => onEnter("pt")}
                   className="bg-mokka rounded-md shadow hover:bg-[#5c3b2a] transition p-1 flex items-center justify-center w-12 h-12"
@@ -147,19 +145,20 @@ export default function Portada({ onEnter, mapaRef }) {
               <div className="w-full h-96 rounded-lg overflow-hidden shadow-lg">
                 <iframe
                   title="Ubicación Moksha"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.716752047106!2d-68.84505958480499!3d-32.88945868094154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e09c39fbdc0a3%3A0xfcc6d02d5c2851fa!2sPlaza%20Independencia!5e0!3m2!1ses-419!2sar!4v1653680509112!5m2!1ses-419!2sar"
+                  src="https://www.google.com/maps/embed?pb=!1m18!..."
                   width="100%"
                   height="100%"
                   allowFullScreen
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
               </div>
               <div className="mt-4 text-center">
                 <p className="text-oliva font-semibold mb-2">
                   Moksha Café Brunch & Bar
                 </p>
-                <p className="text-gray-600 text-sm">Plaza Independencia, Mendoza</p>
+                <p className="text-gray-600 text-sm">
+                  Plaza Independencia, Mendoza
+                </p>
                 <div className="flex justify-center gap-4 mt-4">
                   <a
                     href="https://maps.google.com/?q=Plaza+Independencia+Mendoza"
@@ -181,6 +180,47 @@ export default function Portada({ onEnter, mapaRef }) {
           </div>
         </div>
       )}
+
+      {/* CONTACTO */}
+      <section className="bg-beige text-oliva py-12 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+          {/* Info de contacto */}
+          <div className="space-y-4 text-center md:text-left w-full md:w-1/2">
+            <div className="flex items-center justify-center md:justify-start gap-3">
+              <img src="/icons/whatsapp.svg" alt="WhatsApp" className="w-6 h-6" />
+              <span className="text-base md:text-lg font-medium">
+                +54 9 261 123-4567
+              </span>
+            </div>
+            <div className="flex items-center justify-center md:justify-start gap-3">
+              <img src="/icons/pin.svg" alt="Ubicación" className="w-6 h-6" />
+              <span className="text-base md:text-lg font-medium">
+                Av. Arístides Villanueva 123, Mendoza
+              </span>
+            </div>
+            <div className="flex items-center justify-center md:justify-start gap-3">
+              <img src="/icons/email.svg" alt="Email" className="w-6 h-6" />
+              <span className="text-base md:text-lg font-medium">
+                hola@mokshacafe.com
+              </span>
+            </div>
+          </div>
+
+          {/* Imagen contacto */}
+          <div className="w-full md:w-1/2">
+            <img
+              src="/FotoContacto.jpg"
+              alt="Contacto Moksha"
+              className="rounded-xl shadow-lg w-full h-auto object-cover max-h-60 md:max-h-72"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="text-center py-6 text-sm text-gris bg-beige font-grotesque">
+        © {new Date().getFullYear()} Moksha. Todos los derechos reservados. Hecho con amor por MACA.
+      </footer>
     </div>
   );
 }
