@@ -5,9 +5,7 @@ export default function Portada({ onEnter, mapaRef }) {
   const [showMapPopup, setShowMapPopup] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
 
-  useEffect(() => {
-    // Opcional: aquí podrías controlar otros efectos si querés
-  }, []);
+  useEffect(() => {}, []);
 
   const scrollToMapa = () => {
     if (mapaRef?.current) {
@@ -34,16 +32,16 @@ export default function Portada({ onEnter, mapaRef }) {
           className="w-64 h-64 object-contain mx-auto mb-6 origin-center"
           initial={{ scale: 3, y: -100, opacity: 0 }}
           animate={{ scale: 1, y: 0, opacity: 1 }}
-          transition={{ duration: 2.5, ease: "easeOut" }}
+          transition={{ duration: 3.5, ease: "easeOut" }}
           onAnimationComplete={() => setAnimationComplete(true)}
         />
 
-        {/* Contenido que aparece después de la animación */}
+        {/* Contenido que aparece después de la animación del logo */}
         <AnimatePresence>
           {animationComplete && (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30 }}  // empieza abajo y transparente
+              animate={{ opacity: 1, y: 0 }}   // sube y aparece
               exit={{ opacity: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
               className="max-w-xl w-full bg-transparent rounded-xl p-8"
@@ -63,22 +61,46 @@ export default function Portada({ onEnter, mapaRef }) {
               </div>
 
               {/* Idiomas */}
-              <div className="border-t border-white/30 pt-6">
-                <p className="text-sm text-latte mb-4">Selecciona tu idioma:</p>
-                <div className="flex flex-col gap-2 text-xs items-center">
-                  {["es", "en", "pt"].map((lang) => (
+                <div className="border-t border-white/30 pt-6">
+                  <p className="text-sm text-latte mb-4">Selecciona tu idioma:</p>
+                  <div className="flex flex-row justify-center gap-4 items-center">
+                    {/* Botón texto para Español */}
                     <button
-                      key={lang}
-                      onClick={() => onEnter(lang)}
-                      className="bg-mokka text-white px-4 py-2 rounded-md shadow hover:bg-[#5c3b2a] transition"
+                      onClick={() => onEnter("es")}
+                      className="bg-mokka text-white px-6 py-2 rounded-md shadow hover:bg-[#5c3b2a] transition font-medium"
                     >
-                      {lang === "es" && "Entrar en Español"}
-                      {lang === "en" && "Enter in English"}
-                      {lang === "pt" && "Entrar em Português"}
+                      Entrar en Español
                     </button>
-                  ))}
+
+                    {/* Botón cuadrado con bandera para Inglés */}
+                    <button
+                      onClick={() => onEnter("en")}
+                      className="bg-mokka rounded-md shadow hover:bg-[#5c3b2a] transition p-1 flex items-center justify-center"
+                      style={{ width: 48, height: 48 }}
+                      aria-label="Enter in English"
+                    >
+                      <img
+                        src="/EEUU.png"
+                        alt="English Flag"
+                        className="w-8 h-8 object-contain"
+                      />
+                    </button>
+
+                    {/* Botón cuadrado con bandera para Portugués */}
+                    <button
+                      onClick={() => onEnter("pt")}
+                      className="bg-mokka rounded-md shadow hover:bg-[#5c3b2a] transition p-1 flex items-center justify-center"
+                      style={{ width: 48, height: 48 }}
+                      aria-label="Entrar em Português"
+                    >
+                      <img
+                        src="/Brasil.png"
+                        alt="Portuguese Flag"
+                        className="w-8 h-8 object-contain"
+                      />
+                    </button>
+                  </div>
                 </div>
-              </div>
 
               {/* Botón ubicación */}
               <div className="mt-6">
@@ -148,3 +170,4 @@ export default function Portada({ onEnter, mapaRef }) {
     </div>
   );
 }
+
