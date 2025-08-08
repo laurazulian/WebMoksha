@@ -1,105 +1,112 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Portada({ onEnter, mapaRef }) {
   const [showMapPopup, setShowMapPopup] = useState(false);
-  const [fadeIn, setFadeIn] = useState(false);
+  const [animationComplete, setAnimationComplete] = useState(false);
 
   useEffect(() => {
-    // Activa el efecto fade-in al montar el componente
-    setFadeIn(true);
+    // Opcional: aquí podrías controlar otros efectos si querés
   }, []);
 
   const scrollToMapa = () => {
-    if (mapaRef && mapaRef.current) {
+    if (mapaRef?.current) {
       mapaRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
-  const openMapPopup = () => setShowMapPopup(true);
-  const closeMapPopup = () => setShowMapPopup(false);
-
   return (
     <div
-      className={`min-h-screen relative overflow-hidden transition-opacity duration-1000 ${
-        fadeIn ? 'opacity-100' : 'opacity-0'
-      }`}
+      className="min-h-screen relative overflow-hidden"
+      style={{
+        backgroundImage: "url('/fondo.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
-      {/* Contenedor del fondo animado */}
-      {/* <div className="absolute inset-0 animated-bg -z-10"></div> */}
+      <div className="absolute inset-0 bg-black/60"></div>
 
-      {/* Contenido principal de la portada */}
-      <div className="relative z-10 min-h-screen flex flex-col justify-center items-center text-white text-center px-6">
-        <div className="bg-black/60 p-8 rounded-xl max-w-xl w-full shadow-xl">
-          <img
-            src="/Recurso1.svg"
-            alt="Logo Moksha"
-            className="w-72 h-auto mx-auto"
-          />
+      <div className="relative z-10 min-h-screen flex flex-col justify-center items-center text-center px-6">
+        {/* Logo animado */}
+        <motion.img
+          src="/Recurso1.svg"
+          alt="Logo"
+          className="w-64 h-64 object-contain mx-auto mb-6 origin-center"
+          initial={{ scale: 3, y: -100, opacity: 0 }}
+          animate={{ scale: 1, y: 0, opacity: 1 }}
+          transition={{ duration: 2.5, ease: "easeOut" }}
+          onAnimationComplete={() => setAnimationComplete(true)}
+        />
 
-          <p className="text-latte mb-6 italic">Una taza que te libera</p>
-
-          {/* Botón de reserva */}
-          <div className="mb-8">
-            <a
-              href="https://wa.me/5492610000000"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#25D366] text-white font-medium px-5 py-2 rounded-md
-                        hover:bg-green-600 transition duration-300 shadow-md text-sm inline-block w-full max-w-xs text-center"
+        {/* Contenido que aparece después de la animación */}
+        <AnimatePresence>
+          {animationComplete && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="max-w-xl w-full bg-transparent rounded-xl p-8"
             >
-             Reservar por WhatsApp
-            </a>
+              <p className="text-latte mb-6 italic text-lg">Una taza que te libera</p>
 
-          </div>
-
-          {/* Idiomas */}
-          <div className="border-t border-white/30 pt-6">
-            <p className="text-sm text-latte mb-4">Selecciona tu idioma:</p>
-            <div className="flex flex-col gap-2 text-xs items-center">
-              {["es", "en", "pt"].map((lang) => (
-                <button
-                  key={lang}
-                  onClick={() => onEnter(lang)}
-                  className="bg-[#724c35] text-white px-4 py-2 rounded-md shadow hover:bg-[#5c3b2a] transition"
+              {/* Botón de reserva */}
+              <div className="mb-8">
+                <a
+                  href="https://wa.me/5492610000000"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-oliva text-white font-medium px-5 py-2 rounded-md hover:bg-[#65651b] transition duration-300 shadow-md text-sm inline-block w-full max-w-xs"
                 >
-                  {lang === "es" && "Entrar en Español"}
-                  {lang === "en" && "Enter in English"}
-                  {lang === "pt" && "Entrar em Português"}
+                  Reservar por WhatsApp
+                </a>
+              </div>
+
+              {/* Idiomas */}
+              <div className="border-t border-white/30 pt-6">
+                <p className="text-sm text-latte mb-4">Selecciona tu idioma:</p>
+                <div className="flex flex-col gap-2 text-xs items-center">
+                  {["es", "en", "pt"].map((lang) => (
+                    <button
+                      key={lang}
+                      onClick={() => onEnter(lang)}
+                      className="bg-mokka text-white px-4 py-2 rounded-md shadow hover:bg-[#5c3b2a] transition"
+                    >
+                      {lang === "es" && "Entrar en Español"}
+                      {lang === "en" && "Enter in English"}
+                      {lang === "pt" && "Entrar em Português"}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Botón ubicación */}
+              <div className="mt-6">
+                <button
+                  onClick={() => setShowMapPopup(true)}
+                  className="bg-white text-oliva font-medium px-5 py-2 rounded-md hover:bg-arena transition duration-300 shadow-md text-sm border border-beige"
+                >
+                  📍 Ver Ubicación
                 </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Botón de ubicación separado */}
-          <div className="mt-6">
-           <button
-          onClick={openMapPopup}
-          className="bg-white text-oliva font-medium px-5 py-2 rounded-md
-                    hover:bg-gray-100 transition duration-300 shadow-md text-sm border border-beige"
-        >
-          📍 Ver Ubicación
-        </button>
-
-          </div>
-        </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
-      {/* Popup del Mapa */}
+      {/* Popup Mapa */}
       {showMapPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-hidden relative">
-            {/* Header del popup */}
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 animate-fadeIn">
+          <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-hidden relative shadow-lg">
             <div className="bg-oliva text-white p-4 flex justify-between items-center">
-              <h3 className="text-xl font-amiri">Moksha - Ubicación</h3>
+              <h3 className="text-xl font-semibold">Moksha - Ubicación</h3>
               <button
-                onClick={closeMapPopup}
+                onClick={() => setShowMapPopup(false)}
                 className="text-white hover:text-gray-300 text-2xl font-bold"
               >
                 ✕
               </button>
             </div>
-
-            {/* Contenido del mapa */}
             <div className="p-6">
               <div className="w-full h-96 rounded-lg overflow-hidden shadow-lg">
                 <iframe
@@ -107,15 +114,15 @@ export default function Portada({ onEnter, mapaRef }) {
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.716752047106!2d-68.84505958480499!3d-32.88945868094154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e09c39fbdc0a3%3A0xfcc6d02d5c2851fa!2sPlaza%20Independencia!5e0!3m2!1ses-419!2sar!4v1653680509112!5m2!1ses-419!2sar"
                   width="100%"
                   height="100%"
-                  allowFullScreen=""
+                  allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
               </div>
-
-              {/* Información adicional */}
               <div className="mt-4 text-center">
-                <p className="text-oliva font-semibold mb-2">Moksha Café Brunch & Bar</p>
+                <p className="text-oliva font-semibold mb-2">
+                  Moksha Café Brunch & Bar
+                </p>
                 <p className="text-gray-600 text-sm">Plaza Independencia, Mendoza</p>
                 <div className="flex justify-center gap-4 mt-4">
                   <a
