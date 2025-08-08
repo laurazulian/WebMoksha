@@ -61,46 +61,45 @@ export default function Portada({ onEnter, mapaRef }) {
               </div>
 
               {/* Idiomas */}
-                <div className="border-t border-white/30 pt-6">
-                  <p className="text-sm text-latte mb-4">Selecciona tu idioma:</p>
-                  <div className="flex flex-row justify-center gap-4 items-center">
-                    {/* Botón texto para Español */}
-                    <button
-                      onClick={() => onEnter("es")}
-                      className="bg-mokka text-white px-6 py-2 rounded-md shadow hover:bg-[#5c3b2a] transition font-medium"
-                    >
-                      Entrar en Español
-                    </button>
+              <div className="border-t border-white/30 pt-6">
+                <p className="text-sm text-latte mb-4">Selecciona tu idioma:</p>
+                <div className="flex flex-col sm:flex-row sm:justify-center sm:gap-4 items-center gap-3">
+                  {/* Botón texto para Español */}
+                  <button
+                    onClick={() => onEnter("es")}
+                    className="bg-mokka text-white px-8 py-2 rounded-md shadow hover:bg-[#5c3b2a] transition font-medium w-full sm:w-auto text-center"
+                  >
+                    Entrar en Español
+                  </button>
 
-                    {/* Botón cuadrado con bandera para Inglés */}
-                    <button
-                      onClick={() => onEnter("en")}
-                      className="bg-mokka rounded-md shadow hover:bg-[#5c3b2a] transition p-1 flex items-center justify-center"
-                      style={{ width: 48, height: 48 }}
-                      aria-label="Enter in English"
-                    >
-                      <img
-                        src="/EEUU.png"
-                        alt="English Flag"
-                        className="w-8 h-8 object-contain"
-                      />
-                    </button>
+                  {/* Botón cuadrado con bandera para Inglés */}
+                  <button
+                    onClick={() => onEnter("en")}
+                    className="bg-mokka rounded-md shadow hover:bg-[#5c3b2a] transition p-1 flex items-center justify-center w-12 h-12"
+                    aria-label="Enter in English"
+                  >
+                    <img
+                      src="/EEUU.png"
+                      alt="English Flag"
+                      className="w-8 h-8 object-contain"
+                    />
+                  </button>
 
-                    {/* Botón cuadrado con bandera para Portugués */}
-                    <button
-                      onClick={() => onEnter("pt")}
-                      className="bg-mokka rounded-md shadow hover:bg-[#5c3b2a] transition p-1 flex items-center justify-center"
-                      style={{ width: 48, height: 48 }}
-                      aria-label="Entrar em Português"
-                    >
-                      <img
-                        src="/Brasil.png"
-                        alt="Portuguese Flag"
-                        className="w-8 h-8 object-contain"
-                      />
-                    </button>
-                  </div>
+                  {/* Botón cuadrado con bandera para Portugués */}
+                  <button
+                    onClick={() => onEnter("pt")}
+                    className="bg-mokka rounded-md shadow hover:bg-[#5c3b2a] transition p-1 flex items-center justify-center w-12 h-12"
+                    aria-label="Entrar em Português"
+                  >
+                    <img
+                      src="/Brasil.png"
+                      alt="Portuguese Flag"
+                      className="w-8 h-8 object-contain"
+                    />
+                  </button>
                 </div>
+              </div>
+
 
               {/* Botón ubicación */}
               <div className="mt-6">
