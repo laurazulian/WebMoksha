@@ -86,7 +86,11 @@ export default function Portada({ onEnter, mapaRef }) {
                   onClick={() => onEnter("es")}
                   className="bg-mokka text-white px-8 py-2 rounded-md shadow hover:bg-[#5c3b2a] transition font-medium w-full sm:w-auto text-center"
                 >
-                  Entrar en Español
+                  <img
+                    src="/argentina.png"
+                    alt="Argentina"
+                    className="w-8 h-8 object-contain"
+                  />
                 </button>
                 <button
                   onClick={() => onEnter("en")}
